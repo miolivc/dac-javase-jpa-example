@@ -26,14 +26,17 @@ public class Application {
         Address address = Address.of("Seven Street", 21, "The litle Frog", "Fallen Village");
         PublishingCompany company = PublishingCompany.of("Company of 7 street", address);
         
-        Book book = Book.of(1234567890, "A book about a book", "A book about a book anywhere", "2a, 2017");
-        company.getBooks().add(book);
+        Book bookOne = Book.of(1234567890, "A book about a book", "A book about a book anywhere", "2a, 2017");
+        Book bookTwo = Book.of(1234569870, "The book is on the table", "It is about a book under a table", "1a, 1999");
+        company.getBooks().add(bookOne);
+        company.getBooks().add(bookTwo);
         
         EntityTransaction transaction = entityManager.getTransaction();
         
         transaction.begin();
         entityManager.persist(user);
-        entityManager.persist(book);
+        entityManager.persist(bookOne);
+        entityManager.persist(bookTwo);
         entityManager.persist(address);
         entityManager.persist(company);
         transaction.commit();
